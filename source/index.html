@@ -3,17 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <title>Тест</title>
   </head>
   <body class="site-page">
-    <section class="publications">
+    <section class="publications container">
       <h1 class="visually-hidden">Публикации пользователей</h1>
-      <ul class="publications__list">
-        <div class="grid-sizer"></div>
-        <div class="gutter-sizer"></div>
+      <ul class="publications__list card-columns">
         <li class="publications__item">
           <h2 class="publications__title">Заголовок публикации</h2>
           <p class="publications__text">

@@ -10,7 +10,7 @@
     var newPublication = publicationTemplate.cloneNode(true);
     var listItem = document.createElement('li');
 
-    listItem.classList.add('publications__item');
+    listItem.classList.add('publications__item', 'card');
 
     newPublication.querySelector('.publications__title').textContent = publicationItem.title;
     newPublication.querySelector('.publications__text').textContent = publicationItem.body;
@@ -40,16 +40,16 @@
     // Добавляет список элементов('fragment') в разметку, в список публикаций.
     listPublication.appendChild(fragment);
 
-    // Применяет библиотеку Masonry, для построения сетки, в виде кирпичной кладки.
-    $(document).ready(function(){
-      $(listPublication).masonry({
-        itemSelector: 'li',
-        columnWidth: '.grid-sizer',
-        horizontalOrder: true,
-        gutter: '.gutter-sizer',
-        percentPosition: true
-      });
-    });
+    // // Применяет библиотеку Masonry, для построения сетки, в виде кирпичной кладки.
+    // $(document).ready(function(){
+    //   $(listPublication).masonry({
+    //     itemSelector: 'li',
+    //     columnWidth: '.grid-sizer',
+    //     horizontalOrder: true,
+    //     gutter: '.gutter-sizer',
+    //     percentPosition: true
+    //   });
+    // });
   }
 
   // Удаляет элементы из родительского блока.
