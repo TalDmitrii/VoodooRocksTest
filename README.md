@@ -1,2 +1,2 @@
 # VoodooRocksTest
-Тест
+Тестовое задание VoodooRocksTest.

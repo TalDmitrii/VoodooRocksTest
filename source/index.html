@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <title>Тест</title>
+  </head>
+  <body class="site-page">
+    <section class="publications">
+      <h1 class="visually-hidden">Публикации пользователей</h1>
+      <ul class="publications__list">
+        <div class="grid-sizer"></div>
+        <div class="gutter-sizer"></div>
+        <li class="publications__item">
+          <h2 class="publications__title">Заголовок публикации</h2>
+          <p class="publications__text">
+            Это тестовое задание.
+          </p>
+          <b class="publications__author">Автор</b>
+        </li>
+      </ul>
+    </section>
+    <template id="publication">
+      <div class="publication">
+        <h2 class="publications__title">Заголовок публикации</h2>
+        <p class="publications__text">
+          Это тестовое задание.
+        </p>
+        <b class="publications__author">Автор</b>
+      </div>
+    </template>
+    <script src="js/backend.js"></script>
+    <script src="js/publication.js"></script>
+  </body>
+</html>
