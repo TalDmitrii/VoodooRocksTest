@@ -1,22 +1,38 @@
 .publications {
-  width: 1200px;
-
   margin: 0 auto;
 }
 
-.publications__list {
-  width: auto;
+.form-control {
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 12px rgba(34, 135, 242, 0.9);
+  }
+}
 
+.icon-loupe {
+  fill: #78828b;
+}
+
+.input-group-addon:hover .icon-loupe,
+.input-group-addon:focus .icon-loupe {
+  fill: fade(rgb(0, 0, 255), 70%);
+}
+
+.input-group-addon {
+  background-color: @button-bg;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 12px rgba(34, 135, 242, 0.9);
+  }
+}
+
+.publications__list {
   .list-reset();
 }
 
 .publications__item {
-  display: inline-block;
-
-  margin-bottom: 15px;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 20px;
 
   background-color: #ffffff;
   border: 1px solid #d4d9df;
@@ -53,6 +69,4 @@
   font-weight: 400;
 
   color: #b8bcc0;
-
-  margin-bottom: 15px;
 }

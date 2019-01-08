@@ -1,13 +1,12 @@
 'use strict';
 
 (function () {
-  function load (onLoad, onError) {
-    var URL = 'http://jsonplaceholder.typicode.com/posts';
+  function load(onLoad, onError, url) {
     var SUCCESS_RESPONSE_STATUS = 200;
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
-    xhr.open('GET', URL);
+    xhr.open('GET', url);
 
     xhr.addEventListener('load', function () {
       if (xhr.status === SUCCESS_RESPONSE_STATUS) {
@@ -16,6 +15,7 @@
         onError(xhr.status);
       }
     });
+
 
     xhr.addEventListener('error', function () {
       onError('Произошла ошибка соединения');

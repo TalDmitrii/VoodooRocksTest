@@ -1,7 +1,13 @@
 'use strict';
 
 (function () {
-  window.backend.load(renderPublicationsList);
+  var url = {
+    posts: 'http://jsonplaceholder.typicode.com/posts',
+    users: 'http://jsonplaceholder.typicode.com/users'
+  }
+
+  // Загружает данные публикаций.
+  window.backend.load(writeData, renderError, url.posts);
 
   // Создаёт элемент на основе шаблона, и заполняет его данными.
   // @param {object} publicationItem - Объект, свойствами которого заполняется созданный на основе шаблона элемент.
@@ -10,53 +16,66 @@
     var newPublication = publicationTemplate.cloneNode(true);
     var listItem = document.createElement('li');
 
+    // Это элемент списка публикаций, в котором будет содержаться каждая отдельная публикация.
+    // Добавляет этому элементу классы стилизации.
     listItem.classList.add('publications__item', 'card');
 
-    newPublication.querySelector('.publications__title').textContent = publicationItem.title;
-    newPublication.querySelector('.publications__text').textContent = publicationItem.body;
+    // Заполняет шаблон публикации данными из объекта.
+    newPublication.querySelector('.publications__title').textContent = window.scaffolding.capitalizeFirstLetter(publicationItem.title);
+    newPublication.querySelector('.publications__text').textContent = window.scaffolding.capitalizeFirstLetter(publicationItem.body);
     newPublication.querySelector('.publications__author').textContent = publicationItem.userId;
 
+    // Добавляет шаблон, заполненный данными, в элемент списка.
     listItem.appendChild(newPublication);
 
     return listItem;
   }
 
-  // Создаёт элементы, и импортирует их в 'listPublication'.
+  // Создаёт объект, и записывает в него полученные данные о публикациях.
+  // Инициализирует загрузку дополнительных данных, об именах авторов публикаций.
   // @param {array} publicationArray - Массив объектов.
-  function renderPublicationsList(publicationArray) {
+  function writeData(publicationArray) {
+    window.publications = publicationArray;
+
+    // Загружает дополнительные данные, объединяет эти и полученные ранее данные в один массив,
+    // и на основе этого массива создаёт публикации.
+    window.backend.load(renderPublicationsList, renderError, url.users);
+  }
+
+  // Выдаёт сообщение об ошибке при загрузке данных.
+  // @param {object} message - Статус ответа.
+  function renderError(message) {
+    console.log('Не удалось загрузить данные. Статус ответа: ' + message);
+  }
+
+  // Загружает дополнительные данные, объединяет эти и полученные ранее данные в один массив,
+  // и на основе этого массива создаёт публикации.
+  // @param {array} names - Статус ответа.
+  function renderPublicationsList(names) {
     var listPublication = document.querySelector('.publications__list');
     var customItem = listPublication.querySelectorAll('li');
     var fragment = document.createDocumentFragment();
+    var publications = window.publications;
+
+    window.names = names;
+
 
     // Удаляет базовые элементы, содержащиеся в разметке.
-    deleteElems(customItem);
+    window.scaffolding.deleteElems(customItem);
 
-    // Создаёт новый элемент для каждого объекта массива 'publicationArray',
+    // Перемешивает исходный массив, для отображения публикаций в случайном порядке.
+    window.scaffolding.shuffleArray(publications);
+
+    // Добавляет элементы одного массива в другой массив.
+    window.scaffolding.joinArray(publications, names);
+
+    // Создаёт публикацию для каждого элемента массива 'publications',
     // и добавляет этот элемент в 'fragment'.
-    publicationArray.forEach(function (item) {
+    publications.forEach(function (item) {
       fragment.appendChild(renderPublication(item));
     });
 
     // Добавляет список элементов('fragment') в разметку, в список публикаций.
     listPublication.appendChild(fragment);
-
-    // // Применяет библиотеку Masonry, для построения сетки, в виде кирпичной кладки.
-    // $(document).ready(function(){
-    //   $(listPublication).masonry({
-    //     itemSelector: 'li',
-    //     columnWidth: '.grid-sizer',
-    //     horizontalOrder: true,
-    //     gutter: '.gutter-sizer',
-    //     percentPosition: true
-    //   });
-    // });
-  }
-
-  // Удаляет элементы из родительского блока.
-  // @param {array} arrayElem - Массив элементов.
-  function deleteElems(arrayElem) {
-    arrayElem.forEach(function (elem) {
-      elem.parentNode.removeChild(elem);
-    });
   }
 })();

@@ -3,24 +3,42 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.min.css">
     <title>Тест</title>
   </head>
   <body class="site-page">
-    <section class="publications container">
-      <h1 class="visually-hidden">Публикации пользователей</h1>
-      <ul class="publications__list card-columns">
-        <li class="publications__item">
-          <h2 class="publications__title">Заголовок публикации</h2>
-          <p class="publications__text">
-            Это тестовое задание.
-          </p>
-          <b class="publications__author">Автор</b>
-        </li>
-      </ul>
-    </section>
+    <div class="sprite visually-hidden">
+      <include src="build/img/sprite.svg"></include>
+    </div>
+    <div class="container">
+      <section class="filter row">
+        <h2 class="visually-hidden">Фильтр публикаций</h2>
+        <div class="filter__wrapper col-12 col-md-4 ml-auto mr-auto mb-4">
+          <div class="input-group">
+            <button class="input-group-addon bg-white" type="button">
+              <svg class="icon-loupe" width="18px" height="18px">
+                <use xlink:href="#loupe"></use>
+              </svg>
+            </button>
+            <label class="visually-hidden" for="filter-by-author">Filter by author</label>
+            <input class="form-control" type="text" id="filter-by-author" placeholder="Filter by author...">
+          </div>
+        </div>
+      </section>
+      <section class="publications">
+        <h1 class="visually-hidden">Публикации пользователей</h1>
+        <ul class="publications__list card-columns">
+          <li class="publications__item">
+            <h2 class="publications__title">Заголовок публикации</h2>
+            <p class="publications__text">
+              Это тестовое задание.
+            </p>
+            <b class="publications__author">Автор</b>
+          </li>
+        </ul>
+      </section>
+    </div>
     <template id="publication">
       <div class="publication">
         <h2 class="publications__title">Заголовок публикации</h2>
@@ -30,7 +48,9 @@
         <b class="publications__author">Автор</b>
       </div>
     </template>
-    <script src="js/backend.js"></script>
-    <script src="js/publication.js"></script>
+    <script src="js/scaffolding.min.js"></script>
+    <script src="js/backend.min.js"></script>
+    <script src="js/publication.min.js"></script>
+    <script src="js/filter.min.js"></script>
   </body>
 </html>
