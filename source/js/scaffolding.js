@@ -9,20 +9,6 @@
     });
   }
 
-  // Добавляет в массив публикаций имена авторов, в соответствии с 'id'-номерами.
-  // @param {array} publicationsArray - Массив публикаций.
-  // @param {array} namesArray - Массив с именами авторов публикаций.
-  function joinArray(publicationsArray, namesArray) {
-    for (var i = 0; i <= publicationsArray.length - 1; i++) {
-      for (var j = 0; j <= namesArray.length - 1; j++) {
-        if (publicationsArray[i].userId === namesArray[j].id) {
-          publicationsArray[i].userId = namesArray[j].name;
-          break;
-        }
-      }
-    }
-  }
-
   // Перемешивает элементы массива между собой в случайном порядке.
   // @param {array} arrayToSort - Массив подвергающийся перемешиванию.
   function shuffleArray(arrayToSort) {
@@ -50,7 +36,6 @@
 
   window.scaffolding = {
     deleteElems: deleteElems,
-    joinArray: joinArray,
     shuffleArray: shuffleArray,
     capitalizeFirstLetter: capitalizeFirstLetter
   }

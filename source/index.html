@@ -40,12 +40,29 @@
       </section>
     </div>
     <template id="publication">
-      <div class="publication">
+      <div class="publication" tabindex="-1">
         <h2 class="publications__title">Заголовок публикации</h2>
         <p class="publications__text">
           Это тестовое задание.
         </p>
         <b class="publications__author">Автор</b>
+      </div>
+    </template>
+    <template id="modal">
+      <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Заголовок сообщения</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Текст сообщения.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </template>
     <script src="js/scaffolding.min.js"></script>
